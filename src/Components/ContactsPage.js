@@ -25,16 +25,28 @@ function ContactsPage() {
 
   const removeSelected = async () => {
     try {
-      contacts.map(async (contact) => {
+      for (const contact of contacts) {
         if (contact.isCompleted === true) {
           await service.deleteContact(contact.id);
         }
-      });
+      }
       const res = await service.getContacts();
       setContacts(res.data);
     } catch (err) {
       setErrorMessage(err.message);
     }
+  };
+
+  const handleCompleteChange = (contactId, isCompleted) => {
+    setContacts(
+      contacts.map((contact) => {
+        if (contact.id === contactId) {
+          contact.isCompleted = isCompleted;
+        }
+
+        return { ...contact };
+      })
+    );
   };
 
   return (
@@ -91,7 +103,9 @@ function ContactsPage() {
                     photo={contact.photo}
                     setLoading={setLoading}
                     setContacts={setContacts}
-                    contacts={contacts}
+                    onCompleteChange={(isCompleted) =>
+                      handleCompleteChange(contact.id, isCompleted)
+                    }
                     setErrorMessage={setErrorMessage}
                     showDelete={showDelete}
                   />

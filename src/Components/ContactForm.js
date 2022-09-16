@@ -11,7 +11,6 @@ function ContactForm({ title, btnValue }) {
     mobile: "",
     email: "",
     photo: "",
-    isCompleted: null,
   });
   function isImgUrl(url) {
     const img = new Image();

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { service } from "../services/Service";
 
@@ -11,9 +11,9 @@ function ContactCard({
   setLoading,
   setContacts,
   setErrorMessage,
+  onCompleteChange,
   showDelete,
 }) {
-  const [complete, setComplete] = useState();
   const removeContact = async (contactId) => {
     const confirmation = window.confirm("Are you sure");
     if (confirmation === true) {
@@ -33,20 +33,9 @@ function ContactCard({
       return false;
     }
   };
-  useEffect(() => {
-    (async () => {
-      try {
-        let res = await service.getSingleContact(contact.id);
-        setComplete(res.data);
-      } catch (err) {
-        setErrorMessage(err.message);
-      }
-    })();
-  }, [contact.id, setErrorMessage]);
   const checkIsSelected = async (e) => {
     try {
-      setComplete({ ...complete, isCompleted: !e.target.checked });
-      await service.updateContact(complete, contact.id);
+      onCompleteChange(e.target.checked);
     } catch (err) {
       setErrorMessage(err.message);
     }
@@ -81,6 +70,7 @@ function ContactCard({
             <input
               onChange={checkIsSelected}
               type={"checkbox"}
+              checked={contact.isCompleted || false}
               className="form-check-input px-2 py-2"
             />
           ) : (
