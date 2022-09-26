@@ -1,28 +1,31 @@
 import axios from "axios";
 
 export class Service {
-  serverUrl = `http://localhost:9000/contacts`;
-
-  getContacts() {
+  constructor(pathname){
+    this.path = pathname
+    this.serverUrl = `http://localhost:9000/${this.path}`;
+  }
+  get() {
     let dataUrl = `${this.serverUrl}`;
     return axios.get(dataUrl);
   }
-  createContact(contact) {
+  create(contact) {
     let dataUrl = `${this.serverUrl}`;
     return axios.post(dataUrl, contact);
   }
-  getSingleContact(contactId) {
+  getSingle(contactId) {
     let dataUrl = `${this.serverUrl}/${contactId}`;
     return axios.get(dataUrl);
   }
-  updateContact(contact, contactId) {
+  update(contact, contactId) {
     let dataUrl = `${this.serverUrl}/${contactId}`;
     return axios.put(dataUrl, contact);
   }
-  deleteContact(contactId) {
+  delete(contactId) {
     let dataUrl = `${this.serverUrl}/${contactId}`;
     return axios.delete(dataUrl);
   }
 }
 
-export const service = new Service();
+export const contactsService = new Service("contacts");
+export const usersService = new Service("users");

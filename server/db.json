@@ -1,12 +1,34 @@
 {
   "contacts": [
     {
-      "name": "Anush",
-      "mobile": "099728758",
-      "email": "sanush81@gmail.com",
-      "photo": "https://cdn-icons-png.flaticon.com/512/219/219969.png",
-      "isCompleted": null,
-      "id": 4
+      "name": "Vaghinak",
+      "mobile": "096030806",
+      "email": "svaghinak1982@gmail.com",
+      "id": 2
+    }
+  ],
+  "users": [
+    {
+      "username": "Vaghinak",
+      "contact": {
+        "name": "Anush",
+        "mobile": "099728758",
+        "email": "sanush81@yahoo.com",
+        "id": 3
+      },
+      "photo": "https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/user-icon.png",
+      "id": 1
+    },
+    {
+      "username": "Aghvan",
+      "contact": {
+        "name": "Vaghinak",
+        "mobile": "096030806",
+        "email": "svaghinak1982@gmail.com",
+        "id": 2
+      },
+      "photo": "https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/user-icon.png",
+      "id": 2
     }
   ]
 }

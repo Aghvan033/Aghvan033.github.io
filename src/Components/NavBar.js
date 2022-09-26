@@ -1,15 +1,37 @@
-import { Link } from "react-router-dom";
+import { Navbar, Container } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 
 function NavBar() {
   return (
-    <nav className="navbar navbar-dark bg-dark navbar-expand-sm">
-      <div className="container justify-content-end">
-        <Link to={"/"} className="navbar-brand">
-          <i className="fa-solid fa-mobile p-2 text-warning"></i>
-          <span>Contacts</span>
-        </Link>
-      </div>
-    </nav>
+    <Navbar bg="light">
+      <Container>
+        <LinkContainer to={"/"} style={{ cursor: "pointer" }}>
+          <i className="fas fa-home" />
+        </LinkContainer>
+        <Navbar.Collapse className="justify-content-end">
+          <LinkContainer
+            to={"/contacts/page"}
+            className="mx-5"
+            style={{ cursor: "pointer" }}
+          >
+            <span>
+              <i className="fas fa-mobile p-2 text-warning" />
+              Contacts
+            </span>
+          </LinkContainer>
+          <LinkContainer
+            to={"/users/page"}
+            className="mx-5"
+            style={{ cursor: "pointer" }}
+          >
+            <span>
+              <i className="fas fa-users p-2 text-success" />
+              Users
+            </span>
+          </LinkContainer>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }
 export default NavBar;
