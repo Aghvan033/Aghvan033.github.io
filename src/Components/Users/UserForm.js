@@ -83,10 +83,14 @@ function UserForm({ title, btnValue }) {
                   name="contact"
                   className="form-select"
                   id="select"
+                  // HINT: use value instead of defaultValue
+                  // assign a real value instead of an empty string
+                  // and it can not be undefined cuz you will get an error in console when you change a contact
                   defaultValue={""}
                   onChange={(evt) => {
                     setUser({
                       ...user,
+                      // HINT: use find instead of filter
                       contact: contacts.filter(
                         (contact) => evt.target.value === contact.mobile
                       )[0],
